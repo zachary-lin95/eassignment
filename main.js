@@ -36,14 +36,34 @@ $(document).ready(function() {
 		})
 
 		$("#btncreate").on('click',function(){
-		   var newcontacter = contacterList.push();
+		 
 		   
 		   var newlastn = $('#Lastname').val();
 		   var newfirstn = $('#Firstname').val();
 		   var newphonen =$('#PhoneNumber').val();
+		   var newaddress = $('#Address').val();
+		   var newbirth = $('#Birth').val();
 
-		   console.log(newlastn+'123');
+		   var newcontacter = new Object();
+		   newcontacter.lastname = newlastn;
+		   newcontacter.firstname = newfirstn;
+		   newcontacter.Phonenumber = newphonen;
+		   newcontacter.Address = newaddress;
+		   newcontacter.Birth = newbirth;
+
+		   contacterList.push(newcontacter);
+
+		   var tempStr = "id='"+ newlastn +"' data-fname='"+ 
+		   newfirstn +"' data-phone='"+ newphonen +"' data-photo='"+
+		   photo +"' data-address='"+ newaddress +"'";
+
+		   $("#contacterList").append(
+			"<li><a "+ tempStr +" href='#detail' data-rel='popup'>" +newcontacter.lastname + "</a></li>");
 		   
+
+		   console.log(contacterList+'123');
+		   $('#contacterList').listview("refresh");
+
 		})   
 
 		$('#contacterList').listview("refresh");
