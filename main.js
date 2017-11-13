@@ -62,6 +62,18 @@ $(document).ready(function() {
 		   
 
 		   console.log(contacterList+'123');
+
+		   $("#"+newlastn).on('click', function(e) {
+				var target = $(e.target);
+				
+				$('#lastname').html(e.target.id);
+				$('#firstname').html("Fitst name:"+target.attr('data-fname'));
+				console.log(target.attr('data-fname'));
+				$('#phone').html("Phone: "+target.attr('data-phone'));
+				$('#address').html("Address: "+target.attr('data-address'));
+				$('#photo').attr("src", target.attr('data-photo'));
+			});
+
 		   $('#contacterList').listview("refresh");
 
 		})   
